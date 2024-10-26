@@ -59,3 +59,75 @@ bestSellingAlbums = [
 
 # WRITE YOUR CODE HERE
 
+# Calculate average sales income
+
+total_sale = 0
+
+for album in bestSellingAlbums:
+    total_sale += album['sale']
+average_sale = total_sale / len(bestSellingAlbums)
+print(average_sale)
+
+# Calculate average age
+
+current_year = 2024
+total_year = 0
+
+for album in bestSellingAlbums:
+    total_year += current_year - album['year']
+
+average_year = total_year / len(bestSellingAlbums)
+print(average_year)
+
+# Newest and oldest album
+
+newest_album = max(bestSellingAlbums, key=lambda album: album['year'])
+oldest_album = min(bestSellingAlbums, key=lambda album: album['year'])
+
+print(f"newest album: {newest_album['title']}({newest_album['year']})")
+print(f"oldest album: {oldest_album['title']}({oldest_album['year']})")
+
+# Albums of Eagles
+
+eagles_albums = []
+for album in bestSellingAlbums:
+    if album["artist"] == "Eagles":
+        eagles_albums.append(album)
+
+total_sales = eagles_albums[0]["sale"] + eagles_albums[1]["sale"]
+
+is_both_soft_rock = "soft rock" in eagles_albums[0]["genres"] and "soft rock" in eagles_albums[1]["genres"]
+
+albums_eagles = {
+    "artist": "Eagles",
+    "albums": [eagles_albums[0]["title"], eagles_albums[1]["title"]],
+    "sales": total_sales,
+    "is_both_soft_rock": is_both_soft_rock
+}
+
+print(albums_eagles)
+
+# Add an extra album
+
+new_album = {
+    "artist": "The Beatles",
+    "title": "Abbey Road",
+    "year": 1969,
+    "genres": ["rock", "pop rock"],
+    "sale": 32000000,
+}
+
+bestSellingAlbums.append(new_album)
+
+print(bestSellingAlbums[-1])
+
+# Like it or not
+
+for album in bestSellingAlbums:
+    if album["title"] in ["Thriller", "Abbey Road"]:
+        album["i_like_it"] = True
+    else:
+        album["i_like_it"] = False
+
+for album in bestSellingAlbums:
+    print(album)        
