@@ -57,8 +57,6 @@ bestSellingAlbums = [
     },
 ]
 
-# WRITE YOUR CODE HERE
-
 # Calculate average sales income
 
 total_sale = 0
